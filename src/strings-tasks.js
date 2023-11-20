@@ -19,9 +19,19 @@
  *   getStringLength(null) => 0
  *   getStringLength(undefined) => 0
  */
-function getStringLength(/* value */) {
-  throw new Error('Not implemented');
+function getStringLength(value) {
+  if (typeof value === 'string') {
+    return value.length;
+  }
+  return 0;
 }
+
+getStringLength('aaaaa');
+getStringLength('b');
+getStringLength('');
+getStringLength();
+getStringLength(null);
+getStringLength(undefined);
 
 /**
  * Returns true if the value is a string, otherwise returns false.
@@ -37,9 +47,20 @@ function getStringLength(/* value */) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  if (typeof value === 'string') {
+    return true;
+  }
+
+  return Object.prototype.toString.call(value) === '[object String]';
 }
+
+isString();
+isString(null);
+isString([]);
+isString({});
+isString('test');
+isString('test');
 
 /**
  * Returns the result of concatenation of two strings.
